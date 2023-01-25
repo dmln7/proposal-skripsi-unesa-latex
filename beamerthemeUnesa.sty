@@ -1,0 +1,72 @@
+% Unesa presentation theme for beamer
+%
+% Dimas Maulana <dimasmaulana@unesa.ac.id>, 2023
+% 
+% Changelog:
+%
+% Version 1.0:
+%   First public version.
+
+\ProvidesPackage{beamerthemeUnesa}[2016/08/21]
+
+\usefonttheme[onlylarge]{structurebold}
+
+\pgfdeclareimage[width=\paperwidth, height=\paperheight]{cover}{Gambar/cover}
+\pgfdeclareimage[width=\paperwidth]{content}{Gambar/content}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Colours
+%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{UnesaBlue}{RGB}{40,39,129}
+\definecolor{UnesaOrange}{RGB}{241,90,49}
+\definecolor{UnesaYellow}{RGB}{255,212,0}
+
+\usecolortheme[named=UnesaBlue]{structure}
+%\usecolortheme{rose}
+\setbeamercolor{item}{fg=UnesaOrange}
+\setbeamercolor{title}{fg=UnesaOrange}
+\setbeamercolor{subtitle}{fg=UnesaOrange!85!white}
+\setbeamercolor{author}{fg=white}
+\setbeamercolor{date}{fg=white}
+\setbeamercolor{institute}{fg=white}
+\setbeamercolor{block title}{fg=UnesaBlue,bg=UnesaBlue!15!white}
+\setbeamercolor{block body}{bg=UnesaOrange!5!white}
+\setbeamercolor{section in head/foot}{fg=UnesaBlue}
+\setbeamercolor{separator}{fg=UnesaOrange}
+\setbeamercolor{page number in head/foot}{bg=UnesaBlue!30!white,fg=UnesaBlue}
+\setbeamercolor{footline}{bg=UnesaBlue!30!white,fg=UnesaBlue}
+\setbeamercolor{mini frame}{fg=UnesaOrange}
+\setbeamertemplate{mini frame in other subsection}[default][40]
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Inner theme
+%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{pifont}
+\useinnertheme{rounded}
+\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{enumerate items}[default]
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Outer theme
+%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{background canvas}{
+	\ifnum\c@framenumber=1%
+	\pgfuseimage{cover}
+	\else%
+	\pgfuseimage{content}
+	\fi%
+}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{frametitle}[default][center]
+
+\setbeamertemplate{headline}{%
+\vskip10pt\hskip40pt%
+\insertnavigation{.65\paperwidth}%
+}
+
+\setbeamertemplate{section in head/foot}{\insertsectionhead\space}
+
+\setbeamertemplate{footline}{%
+\hfill\raisebox{16pt}[0pt][0pt]{\usebeamercolor[fg]{page number in head/foot}\insertframenumber/\inserttotalframenumber}\hspace*{5pt}\vskip1pt%
+}
