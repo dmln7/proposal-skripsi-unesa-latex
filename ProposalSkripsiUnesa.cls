@@ -1,4 +1,4 @@
-\ProvidesClass{SkripsiUnesa}[25/1/2023 v1.05]
+\ProvidesClass{ProposalSkripsiUnesa}[25/1/2023 v1.06]
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass[a4paper,12pt,twoside,openright]{book}
 \RequirePackage[hmargin={2.5cm,2cm},vmargin={2.5cm,2cm}]{geometry}
@@ -226,8 +226,8 @@
 \newtheorem{theorem}{Teorema}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposisi}
-\newtheorem{corollary}[theorem]{Corollary}
-
+\newtheorem{corollary}[theorem]{Akibat}
+	
 %%%-------------setting daftar isi/tabel/gambar------------------
 \renewcommand\@dotsep{2}
 \renewcommand*\l@chapter[2]{%
@@ -255,6 +255,12 @@
 %%%%%%------------------------
 \renewcommand\theorem
 {\ifnum \c@chapter>\z@ {\bfseries{Teorema}~\@arabic\c@chapter.\fi \@arabic\c@equation}}
+
+\renewcommand\lemma
+{\ifnum \c@chapter>\z@ {\bfseries{Lemma}~\@arabic\c@chapter.\fi \@arabic\c@equation}}
+
+\renewcommand\corollary
+{\ifnum \c@chapter>\z@ {\bfseries{Akibat}~\@arabic\c@chapter.\fi \@arabic\c@equation}}
 
 \renewcommand\theequation
 {\ifnum \c@chapter>\z@ \@arabic\c@chapter.\fi \@arabic\c@equation}
