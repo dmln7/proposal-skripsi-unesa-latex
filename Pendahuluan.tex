@@ -1,0 +1,100 @@
+\chapter{PENDAHULUAN}
+
+\section{Latar Belakang}
+Air adalah salah satu unsur vital bagi kelangsungan hidup makhluk hidup. Air diperlukan dalam berbagai aktivitas manusia seperti kebutuhan minum, MCK, irigasi, dan minuman untuk ternak. Selain itu, air juga diperlukan dalam kelangsungan industri dan pengembangan teknologi untuk meningkatkan taraf kesejahteraan hidup manusia. Sungai merupakan salah satu sumber untuk mendapatkan air untuk mencukupi kebutuhan hidup manusia. Air juga membentuk 70$\%$ bumi, termasuk di dalamnya laut dan sungai. Sungai telah menjadi bagian yang penting dalam kehidupan manusia.
+
+Masih banyak masyarakat Indonesia yang menggantungkan hidupnya pada air sungai sebagai sumber air yang digunakan untuk aktivitas sehari-hari seperti mencuci baju, mencuci peralatan dapur, irigasi, maupun transportasi. Salah satu hal penting dari fungsi sungai adalah peranannya dalam mengendalikan banjir dengan mengalirkan air hujan. Sungai berpengaruh besar terhadap kelangsungan hidup ekosistem sungai maupun manusia yang hidup di sekitar sungai. Oleh karena itu, kualitas air sungai perlu dijaga dari pencemaran baik dari limbah industri maupun non-industri.
+
+Sungai merupakan salah satu air permukaan yang rentan terhadap pencemaran. Perkembangan industri yang berupa pabrik-pabrik di sepanjang daerah aliran sungai turut menyumbang polutan di sungai. Secara umum, limbah industri menempati posisi utama penyebab pencemaran jangka panjang terhadap air permukaan, terutama industri-industri yang memiliki air buangan dengan bahan pencemar tinggi, seperti industri pertambangan, industri baja dan besi maupun industri bahan-bahan kimia.
+
+Industri di Indonesia berkembang dengan cukup pesat beberapa dalam beberapa dekade terakhir ini. Perkembangan tersebut tidak hanya membawa dampak positif bagi masyarakat, dampak negatif juga turut mempunyai andil dalam perkembangan industri ini. Selain hasil industri yang bermanfaat bagi masyarakat, dihasilkan pula hasil industri yang berupa limbah dan polutan lainnya. Polutan merupakan zat atau benda yang masuk ke dalam suatu badan penerima sehingga memberikan suatu perubahan sifat atau terhadap badan penerima tersebut. Pada daerah perairan, dampak polutan dapat memberikan dampak pada pola ataupun karakteristik perairan. Karena itu, pemodelan pola penyebaran polutan sangat penting untuk mengevaluasi risiko dari pembuangan yang disengaja, berbahaya, dan terkontaminasi dalam sungai dan untuk memahami transportasi biogeokimia dalam ekosistem sungai, terutama dalam siklus hara.
+
+Pembuangan limbah cair industri atau non-industri ke sungai mempunyai potensi sebagai penyebab pencemaran bagi sungai tersebut. Ini disebabkan karena setiap beban limbah cair yang dibuang ke sungai mengandung parameter-parameter yang bersifat fisik, kimiawi dan biologis yang dapat merubah kualitas air sungai atau mempengaruhi besar nilai oksigen terlarut dalam sungai tersebut. Sedangkan beban limbah cair yang dibuang ke sungai semakin lama semakin meningkat, oleh karena itu untuk menjaga kualitas air sungai tersebut diperlukan upaya pengawasan dan \textit{monitoring} kualitas air sungai.
+
+Berdasarkan uraian diatas, maka pada penelitian ini akan dikaji penyebaran polutan di pertemuan dua sungai. Penelitian ini akan dikembangkan dengan metode volume hingga skema \textit{Quadratic Upwind Interpolation Convective Kinematics} (\textit{QUICK}). Untuk mencari penyelesaian numeriknya dan visualisasi hasil akan digunakan perangkat lunak MATLAB.
+
+\section{Rumusan Masalah}
+Rumusan masalah pada penelitian ini adalah:
+\begin{tenumerate}
+	\item Bagaimana model matematika penyebaran polutan pada pertemuan dua sungai.
+	\item Bagaimana menerapkan Metode Volume Hingga skema \textit{QUICK} pada model penyebaran polutan pada pertemuan dua sungai tersebut.
+	\item Bagaimana hasil penyebaran polutan di daerah aliran pertemuan dua sungai dengan Metode Volume Hingga skema \textit{QUICK}.
+\end{tenumerate}
+
+\section{Tujuan Penelitian}
+Tujuan penelitian ini adalah:
+\begin{tenumerate}
+	\item Mengkaji dan menganalisis model matematika penyebaran polutan pada pertemuan dua sungai.	
+	\item Menerapkan Metode Volume Hingga skema \textit{QUICK} dan menyelesaikan model matematika penyebaran polutan pada pertemuan dua sungai tersebut.
+	\item Menyimulasikan dan memvisualisasikan penyelesaian numerik pola penyebaran polutan pada pertemuan dua sungai.
+\end{tenumerate}
+
+\section{Manfaat Penelitian}
+Manfaat penelitian ini adalah:
+\begin{tenumerate}
+	\item Memberikan informasi mengenai pola penyebaran polutan pada pertemuan dua sungai dengan pendekatan matematis
+	\item Sebagai referensi pilihan alternatif bagi peneliti yang lain untuk melengkapi metode penyelesaian numerik yang ada.
+\end{tenumerate}
+
+\section{Batasan Masalah}
+Batasan masalah pada penelitian ini adalah:
+\begin{tenumerate}
+	\item Penelitian dilakukan dalam dalam bentuk simulasi numerik di komputer.
+	\item Data kecepatan yang dipergunakan dalam penelitian ini diambil dari PT. Jasa Tirta I.
+	\item Unsur-unsur hidrodinamika yang diteliti adalah kecepatan aliran.
+	\item Pola penyebaran polutan yang diamati adalah arah panjang sungai (longitudinal) dan arah lebar sungai (lateral) selama tahun 2012.
+	\item Parameter kualitas sungai yang digunakan adalah TSS (\textit{Total Suspended Solid}).
+	\item Aliran sungai ditentukan bersifat kondisi Laminer.
+	\item Kepadatan air sungai konstan karena air sungai adalah fluida yang tidak mampu mampat.
+	\item Perubahan viskositas air cukup kecil sehingga dianggap konstan.
+	\item Permukaan sungai adalah horizontal dan dinding sungai berkarakteristik relatif halus.
+	\item Air sungai mengandung polutan TSS, dan polutan TSS menyebar mengikuti kecepatan aliran sungai.
+	\item Pengaruh putaran bumi (gaya \textit{Coriolis}) sangat kecil sehingga dianggap nol.
+	\item Gradien tekanan pada masing-masing sumbu ditentukan.
+	\item Pengaruh angin sangat kecil sehingga gesekan di permukaan diasumsikan nol.
+	\item Panjang sungai yang diukur dari pertemuan dua sungai adalah $1500m$ dan lebarnya $25m$
+	\item Sungai yang menjadi objek penelitian ini adalah Kali Surabaya yang mengalir diantara Jalan Raya Mastrip (Karangpilang, Surabaya) dan Jalan Ngelom Rolak (Sepanjang, Sidoarjo)
+\end{tenumerate}
+
+\section{Asumsi}
+Batasan masalah pada penelitian ini adalah:
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.2\textwidth]{Gambar/logounesa}
+	\caption{Logo Unesa}
+	\label{fig:logounesa}
+\end{figure}
+
+Rumus umum persamaan pythagoras diberikan oleh persamaan~\ref{eq:pythagoras} berikut ini
+\begin{equation}
+	a^2 + b^2 = c^2 \label{eq:pythagoras}
+\end{equation}
+
+Model penyebaran penyakit diberikan oleh sistem persamaan diferensial sebagai berikut:
+\begin{align}
+	\frac{dS}{dt} &= \beta S I\\
+	\nonumber \frac{dI}{dt} &= -\beta S I
+\end{align}
+
+\begin{equation}
+	I = \int_0^{\infty} e^{at}~{dt}
+\end{equation}
+
+Matriks Identitas $3 \times 3$ diberikan oleh:
+\begin{equation}
+	I = \begin{bmatrix}
+	1 & 0 & \cdots & 0\\
+	0 & 1 & \cdots & \vdots\\
+	\cdots & \cdots & \ddots &\vdots\\
+	0 & 0 & \cdots & 1
+	\end{bmatrix}
+\end{equation}
+
+\begin{theorem} \emph{Teorema Keterbagian}
+	Apabila diketahui $a$, $b$, dan $c$.
+\end{theorem}
+
+\begin{proof}
+	Berdasarkan $\cdots$
+\end{proof}
