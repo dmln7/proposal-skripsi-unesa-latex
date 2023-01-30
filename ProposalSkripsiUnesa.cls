@@ -1,10 +1,9 @@
-\ProvidesClass{ProposalSkripsiUnesa}[25/1/2023 v1.06]
+\ProvidesClass{ProposalSkripsiUnesa}[30/1/2023 v1.1]
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass[a4paper,12pt,twoside,openright]{book}
 \RequirePackage[hmargin={2.5cm,2cm},vmargin={2.5cm,2cm}]{geometry}
-\RequirePackage{graphicx,mathptmx,sectsty,amssymb,amsmath,amsthm,amsfonts,indentfirst,tabularx,ifthen,lscape,mathpazo,hyperref,array,breqn,mathtools,subcaption,multirow,natbib}
+\RequirePackage{graphicx,sectsty,amssymb,amsmath,amsthm,amsfonts,pxfonts,indentfirst,tabularx,ifthen,lscape,hyperref,array,breqn,mathtools,subcaption,multirow,natbib,tikz,xpatch}
 %\RequirePackage[bahasa]{babel}
-\RequirePackage[table]{xcolor}
 
 %
 \newcommand{\@judul}{Judul Skripsi}
@@ -223,10 +222,13 @@
 \renewcommand*\thechapter{\@Roman\c@chapter}
 \renewcommand*\thesection{\@Alph\c@section.}
 
-\newtheorem{theorem}{Teorema}[section]
+\newtheorem{theorem}{Teorema}[chapter]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposisi}
 \newtheorem{corollary}[theorem]{Akibat}
+\newtheorem{axiom}[theorem]{Aksioma}
+\newtheorem{example}[theorem]{Contoh}
+\newtheorem{definition}[theorem]{Definisi}
 	
 %%%-------------setting daftar isi/tabel/gambar------------------
 \renewcommand\@dotsep{2}
@@ -253,19 +255,14 @@
 \renewcommand*\l@figure{\@dottedtocline{1}{1.5em}{6em}}
 \renewcommand*\l@table{\@dottedtocline{1}{1.5em}{5em}}
 %%%%%%------------------------
-\renewcommand\theorem
-{\ifnum \c@chapter>\z@ {\bfseries{Teorema}~\@arabic\c@chapter.\fi \@arabic\c@equation}}
 
-\renewcommand\lemma
-{\ifnum \c@chapter>\z@ {\bfseries{Lemma}~\@arabic\c@chapter.\fi \@arabic\c@equation}}
-
-\renewcommand\corollary
-{\ifnum \c@chapter>\z@ {\bfseries{Akibat}~\@arabic\c@chapter.\fi \@arabic\c@equation}}
+\renewcommand\thetheorem
+{\ifnum \c@chapter>\z@ \@arabic\c@chapter.\fi \@arabic\c@theorem}
 
 \renewcommand\theequation
 {\ifnum \c@chapter>\z@ \@arabic\c@chapter.\fi \@arabic\c@equation}
 
-\renewcommand \thefigure
+\renewcommand\thefigure
 {\ifnum \c@chapter>\z@ \figurename\space \@arabic\c@chapter.\fi \@arabic\c@figure}
 \def\fnum@figure{\nobreakspace\thefigure}
 
@@ -320,14 +317,6 @@
 	}
 	{\end{enumerate}}
 
-%-----------------------------------
-%\RequirePackage{picins}
-%\newcommand\biodata[1]{%-----------
-  %\newsavebox{\foto}
-  %\savebox{\foto}[3cm][b]{\includegraphics[width=3.5cm,height=5cm]{#1}}
-  %\parpic(3.5cm,5.5cm){\usebox\foto}
-%}
-
 %%%------------- PENYESUAIAN ISTILAH ---------------------------
 \renewcommand\contentsname{DAFTAR ISI}
 \renewcommand\listfigurename{DAFTAR GAMBAR}
@@ -338,6 +327,8 @@
 \renewcommand\tablename{Tabel}
 \renewcommand\chaptername{BAB}
 \renewcommand\appendixname{Lampiran}
+\renewcommand\proofname{Bukti}
+\renewcommand\qedsymbol{$\blacksquare$}
 
 \lefthyphenmin=5
 \righthyphenmin=5
