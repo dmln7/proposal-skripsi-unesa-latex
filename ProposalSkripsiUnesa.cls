@@ -1,11 +1,15 @@
-\ProvidesClass{ProposalSkripsiUnesa}[30/1/2023 v1.1]
+\ProvidesClass{ProposalSkripsiUnesa}[31/1/2023 v1.2]
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass[a4paper,12pt,twoside,openright]{book}
 \RequirePackage[hmargin={2.5cm,2cm},vmargin={2.5cm,2cm}]{geometry}
-\RequirePackage{graphicx,sectsty,amssymb,amsmath,amsthm,amsfonts,pxfonts,indentfirst,tabularx,ifthen,lscape,hyperref,array,breqn,mathtools,subcaption,multirow,natbib,tikz,xpatch}
+\RequirePackage{graphicx,sectsty,amssymb,amsmath,amsthm,amsfonts,pxfonts,indentfirst,tabularx,ifthen,lscape,hyperref,array,breqn,mathtools,subcaption,multirow,natbib,tikz,xpatch,actuarialsymbol, actuarialangle}
 %\RequirePackage[bahasa]{babel}
+\newcommand{\px}{\@actothersc{p}}
+\newcommand{\Ax}{\@actinssc{A}}
+\newcommand{\ax}{\@actannsc{a}}
+\newcommand{\premium}{\@actpremres{P}}
 
-%
+
 \newcommand{\@judul}{Judul Skripsi}
 \DeclareRobustCommand{\Judul}[1]{%
     \renewcommand{\@judul}{#1}%
