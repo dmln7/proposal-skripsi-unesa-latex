@@ -40,32 +40,33 @@
 %---------------------------------------------------------------------
 
 ENTRY
-{ address
-author
-booktitle
-chapter
-edition
-editor
-howpublished
-institution
-journal
-key
-month
-note
-number
-organization
-pages
-publisher
-school
-series
-title
-type
-url
-volume
-year
+{	address
+	author
+	booktitle
+	chapter
+	edition
+	editor
+	howpublished
+	institution
+	journal
+	key
+	month
+	note
+	number
+	organization
+	pages
+	publisher
+	school
+	series
+	title
+	type
+	url
+	volume
+	year
 }
+
 {}
-{ label extra.label sort.label short.list }
+{label extra.label sort.label short.list }
 INTEGERS { output.state before.all mid.sentence after.sentence after.block }
 FUNCTION {init.state.consts}
 { #0 'before.all :=
@@ -1161,6 +1162,42 @@ fin.entry
 write.url
 }
 
+FUNCTION {statute}
+{ output.bibitem
+author empty$
+{ format.editors "author and editor" output.check
+editor format.key output
+add.blank
+}
+{ format.authors output.nonnull
+crossref missing$
+{ "author and editor" editor either.or.check }
+'skip$
+if$
+}
+if$
+format.date "year" output.check
+date.block
+format.btitle "title" output.check
+crossref missing$
+{ format.bvolume output
+new.block
+format.number.series output
+new.sentence
+format.publisher.address output
+}
+{
+new.block
+format.book.crossref output.nonnull
+}
+if$
+format.edition output
+new.block
+format.note output
+fin.entry
+write.url
+}
+
 FUNCTION {techreport}
 { output.bibitem
 format.authors "author" output.check
@@ -1482,6 +1519,3 @@ FUNCTION {end.bib}
 "\end{thebibliography}" write$ newline$
 }
 EXECUTE {end.bib}
-%% End of customized bst file
-%%
-%% End of file `apa-ben.bst'.
