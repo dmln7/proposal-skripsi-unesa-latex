@@ -4,11 +4,6 @@
 \RequirePackage[hmargin={2.5cm,2cm},vmargin={2.5cm,2cm}]{geometry}
 \RequirePackage{graphicx,sectsty,amssymb,amsmath,amsthm,amsfonts,pxfonts,indentfirst,tabularx,ifthen,lscape,hyperref,array,breqn,mathtools,subcaption,multirow,natbib,tikz,xpatch,actuarialsymbol, actuarialangle}
 %\RequirePackage[bahasa]{babel}
-\newcommand{\px}{\@actothersc{p}}
-\newcommand{\Ax}{\@actinssc{A}}
-\newcommand{\ax}{\@actannsc{a}}
-\newcommand{\premium}{\@actpremres{P}}
-
 
 \newcommand{\@judul}{Judul Skripsi}
 \DeclareRobustCommand{\Judul}[1]{%
