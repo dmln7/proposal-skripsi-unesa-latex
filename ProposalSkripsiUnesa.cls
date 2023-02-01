@@ -2,7 +2,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass[a4paper,12pt,twoside,openright]{book}
 \RequirePackage[hmargin={2.5cm,2cm},vmargin={2.5cm,2cm}]{geometry}
-\RequirePackage{graphicx,sectsty,amssymb,amsmath,amsthm,amsfonts,pxfonts,indentfirst,tabularx,ifthen,lscape,hyperref,array,breqn,mathtools,subcaption,multirow,natbib,tikz,xpatch,actuarialsymbol, actuarialangle}
+\RequirePackage{amssymb,amsmath,amsthm,amsfonts,pxfonts,graphicx,sectsty,indentfirst,tabularx,ifthen,lscape,hyperref,array,breqn,mathtools,subcaption,multirow,natbib,tikz,actuarialsymbol,actuarialangle}
 %\RequirePackage[bahasa]{babel}
 
 \newcommand{\@judul}{Judul Skripsi}
