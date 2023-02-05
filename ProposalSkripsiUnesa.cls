@@ -1,9 +1,11 @@
-\ProvidesClass{ProposalSkripsiUnesa}[31/1/2023 v1.2]
+\ProvidesClass{ProposalSkripsiUnesa}[05/02/2023 v1.3]
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass[a4paper,12pt,twoside,openright]{book}
 \RequirePackage[hmargin={2.5cm,2cm},vmargin={2.5cm,2cm}]{geometry}
-\RequirePackage{amssymb,amsmath,amsthm,amsfonts,pxfonts,graphicx,sectsty,indentfirst,tabularx,ifthen,lscape,hyperref,array,breqn,mathtools,subcaption,multirow,natbib,tikz,actuarialsymbol,actuarialangle}
-%\RequirePackage[bahasa]{babel}
+\RequirePackage{graphicx,sectsty,amssymb,amsmath,amsthm,amsfonts,pxfonts,indentfirst,tabularx,ifthen,lscape,hyperref,array,mathtools,subcaption,multirow,natbib,tikz,actuarialsymbol,actuarialangle}
+\RequirePackage[bahasa]{babel}
+\usetikzlibrary{shapes.geometric, arrows}
+
 
 \newcommand{\@judul}{Judul Skripsi}
 \DeclareRobustCommand{\Judul}[1]{%
@@ -25,14 +27,14 @@
 \DeclareRobustCommand\ProgramStudi[1]{%
 	\renewcommand\@prodi{#1}
 }
-\newcommand\@dep{Matematika}
-\DeclareRobustCommand\Departemen[1]{%
-   \renewcommand\@dep{#1}
-}
-\newcommand\@dept{Mathematics}
-\DeclareRobustCommand\Department[1]{%
-   \renewcommand\@dept{#1}
-}
+%\newcommand\@dep{Matematika}
+%\DeclareRobustCommand\Departemen[1]{%
+%   \renewcommand\@dep{#1}
+%}
+%\newcommand\@dept{Mathematics}
+%\DeclareRobustCommand\Department[1]{%
+%   \renewcommand\@dept{#1}
+%}
 \newcommand\@thn{2023}
 \DeclareRobustCommand\Tahun[1]{%
    \renewcommand\@thn{#1}
@@ -83,11 +85,11 @@
     
     Oleh\\
     \MakeUppercase{\@nama}\\
-    \textbf{NIM \@NIM}\\[20ex]
+    \textbf{NIM \@NIM}\\[25ex]
     
     \textbf{\textit{UNIVERSITAS NEGERI SURABAYA}}\\
     FAKULTAS~\MakeUppercase{\@fak}\\
-    DEPARTEMEN~\MakeUppercase{\@dep}\\
+   % DEPARTEMEN~\MakeUppercase{\@dep}\\
     \textbf{\textit{PROGRAM STUDI~\MakeUppercase{\@prodi}}}\\
     \@thn
     \end{center}
@@ -320,7 +322,7 @@
 \renewcommand\contentsname{DAFTAR ISI}
 \renewcommand\listfigurename{DAFTAR GAMBAR}
 \renewcommand\listtablename{DAFTAR TABEL}
-\renewcommand\bibname{DAFTAR PUSTAKA}
+%\renewcommand\bibname{DAFTAR PUSTAKA}
 \renewcommand\indexname{INDEKS}
 \renewcommand\figurename{Gambar}
 \renewcommand\tablename{Tabel}
@@ -328,6 +330,7 @@
 \renewcommand\appendixname{Lampiran}
 \renewcommand\proofname{Bukti}
 \renewcommand\qedsymbol{$\blacksquare$}
+\addto{\captionsbahasa}{\renewcommand{\bibname}{DAFTAR PUSTAKA}}
 
 \lefthyphenmin=5
 \righthyphenmin=5
