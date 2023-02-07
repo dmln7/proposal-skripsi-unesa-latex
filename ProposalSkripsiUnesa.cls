@@ -2,7 +2,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass[a4paper,12pt,twoside,openright]{book}
 \RequirePackage[hmargin={2.5cm,2cm},vmargin={2.5cm,2cm}]{geometry}
-\RequirePackage{graphicx,sectsty,amssymb,amsmath,amsthm,amsfonts,pxfonts,enumitem,indentfirst,tabularx,ifthen,lscape,hyperref,array,mathtools,subcaption,multirow,natbib,tikz,actuarialsymbol,actuarialangle,glossaries}
+\RequirePackage{graphicx,sectsty,setspace,amssymb,amsmath,amsthm,amsfonts,pxfonts,enumitem,indentfirst,tabularx,ifthen,lscape,hyperref,array,mathtools,subcaption,multirow,natbib,tikz,actuarialsymbol,actuarialangle,glossaries}
 \RequirePackage[bahasa]{babel}
 \usetikzlibrary{shapes.geometric, arrows}
 \loadglsentries{Istilah.tex}
