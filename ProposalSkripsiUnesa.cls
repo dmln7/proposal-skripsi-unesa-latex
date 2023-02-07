@@ -1,11 +1,11 @@
-\ProvidesClass{ProposalSkripsiUnesa}[05/02/2023 v1.3]
+\ProvidesClass{ProposalSkripsiUnesa}[07/02/2023 v1.4]
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass[a4paper,12pt,twoside,openright]{book}
 \RequirePackage[hmargin={2.5cm,2cm},vmargin={2.5cm,2cm}]{geometry}
-\RequirePackage{graphicx,sectsty,amssymb,amsmath,amsthm,amsfonts,pxfonts,indentfirst,tabularx,ifthen,lscape,hyperref,array,mathtools,subcaption,multirow,natbib,tikz,actuarialsymbol,actuarialangle}
+\RequirePackage{graphicx,sectsty,amssymb,amsmath,amsthm,amsfonts,pxfonts,enumitem,indentfirst,tabularx,ifthen,lscape,hyperref,array,mathtools,subcaption,multirow,natbib,tikz,actuarialsymbol,actuarialangle,glossaries}
 \RequirePackage[bahasa]{babel}
 \usetikzlibrary{shapes.geometric, arrows}
-
+\loadglsentries{Istilah.tex}
 
 \newcommand{\@judul}{Judul Skripsi}
 \DeclareRobustCommand{\Judul}[1]{%
@@ -154,7 +154,6 @@
    %\pagestyle{myheadings}
     \pagestyle{plain}
 }
-\setlength{\parindent}{9mm}
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
 	\thispagestyle{plain}%
 	\global\@topnum\z@
@@ -204,12 +203,14 @@
 		\large\bfseries\MakeUppercase{#1}\par\nobreak
 		\vskip 40\p@
 }}
+
+\setlength{\parindent}{2em}
 \renewcommand\section{\@startsection {section}{1}{\z@}%
-	{-1.5ex \@plus -1ex \@minus -.2ex}%
+	{-3.5ex \@plus -1ex \@minus -.2ex}%
 	{.01ex \@plus.2ex}%
 	{\normalfont\normalsize\bfseries}}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-	{-1.5ex\@plus -1ex \@minus -.2ex}%
+	{-1ex\@plus -1ex \@minus -.2ex}%
 	{.01ex \@plus .2ex}%
 	{\normalfont\normalsize\bfseries}}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
@@ -218,10 +219,11 @@
 	{\normalfont\normalsize}}
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
 	{.25ex \@plus1ex \@minus.2ex}%
-	{-1.5em}%
+	{-.5em}%
 	{\normalfont\normalsize\bfseries}}
 \renewcommand*\thechapter{\@Roman\c@chapter}
 \renewcommand*\thesection{\@Alph\c@section.}
+\renewcommand*\thesubsection{\@arabic\c@subsection.}
 
 \newtheorem{theorem}{Teorema}[chapter]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -250,8 +252,8 @@
 	\penalty\@highpenalty
 	\endgroup
 	\fi}
-\renewcommand*\l@section{\@dottedtocline{1}{2.8em}{2.2em}}
-\renewcommand*\l@subsection{\@dottedtocline{2}{5em}{2.75em}}
+\renewcommand*\l@section{\@dottedtocline{1}{3em}{2.2em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{5em}{3em}}
 \renewcommand*\l@subsubsection{\@dottedtocline{3}{7.8em}{4.1em}}
 \renewcommand*\l@figure{\@dottedtocline{1}{1.5em}{6em}}
 \renewcommand*\l@table{\@dottedtocline{1}{1.5em}{5em}}
@@ -277,6 +279,17 @@
 	\addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
 	\bibliographystyle{unesa}
 	\bibliography{#1}
+}
+
+\newcommand{\Glosarium}{%----------------------
+	\cleardoublepage
+	\addcontentsline{toc}{chapter}{GLOSARIUM}
+	\begin{center}
+		\large \textbf{GLOSARIUM}
+	\end{center}
+	\vskip 3ex
+	\glsaddall
+	\printglossaries
 }
 
 %%%%---------------------------------
@@ -309,14 +322,8 @@
     \vskip 20\p@\par
 }
 
-\newenvironment{tenumerate}{
-	\begin{enumerate}
-		\setlength{\partopsep}{0pt}
-		\setlength{\topsep}{0pt}
-		\setlength{\itemsep}{1pt}
-		\setlength{\parskip}{0pt}
-	}
-	{\end{enumerate}}
+\newlist{daftar}{enumerate}{1}
+\setlist[daftar]{labelindent=2em,leftmargin=*,listparindent=2em,partopsep=0pt, topsep=0pt,itemsep=0pt,parsep=0pt,label=\arabic*.}
 
 %%%------------- PENYESUAIAN ISTILAH ---------------------------
 \renewcommand\contentsname{DAFTAR ISI}
