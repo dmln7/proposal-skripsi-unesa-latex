@@ -1,11 +1,11 @@
-\ProvidesClass{ProposalSkripsiUnesa}[07/02/2023 v1.4]
+\ProvidesClass{ProposalSkripsiUnesa}[10/02/2023 v1.5]
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass[a4paper,12pt,twoside,openright]{book}
 \RequirePackage[hmargin={2.5cm,2cm},vmargin={2.5cm,2cm}]{geometry}
-\RequirePackage{graphicx,sectsty,setspace,amssymb,amsmath,amsthm,amsfonts,pxfonts,enumitem,indentfirst,tabularx,ifthen,lscape,hyperref,array,mathtools,subcaption,multirow,natbib,tikz,actuarialsymbol,actuarialangle,glossaries}
+\RequirePackage{graphicx,sectsty,setspace,amssymb,amsmath,amsthm,amsfonts,pxfonts,enumitem,indentfirst,tabularx,ifthen,lscape,hyperref,array,mathtools,subcaption,multirow,natbib,tikz,actuarialsymbol,actuarialangle,imakeidx}
+\RequirePackage[automake,toc]{glossaries}
 \RequirePackage[bahasa]{babel}
 \usetikzlibrary{shapes.geometric, arrows}
-%\loadglsentries{Istilah.tex}
 
 \newcommand{\@judul}{Judul Skripsi}
 \DeclareRobustCommand{\Judul}[1]{%
@@ -283,12 +283,7 @@
 
 \newcommand{\Glosarium}{%----------------------
 	\cleardoublepage
-	\addcontentsline{toc}{chapter}{GLOSARIUM}
-	\begin{center}
-		\large \textbf{GLOSARIUM}
-	\end{center}
 	\vskip 3ex
-	\glsaddall
 	\printglossaries
 }
 
@@ -338,6 +333,7 @@
 \renewcommand\proofname{Bukti}
 \renewcommand\qedsymbol{$\blacksquare$}
 \addto{\captionsbahasa}{\renewcommand{\bibname}{DAFTAR PUSTAKA}}
+\addto\captionsbahasa{\renewcommand{\glossaryname}{GLOSARIUM}}
 
 \lefthyphenmin=5
 \righthyphenmin=5
