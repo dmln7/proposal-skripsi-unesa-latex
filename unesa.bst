@@ -74,7 +74,9 @@ FUNCTION {init.state.consts}
 #2 'after.sentence :=
 #3 'after.block :=
 }
+
 STRINGS { s t}
+
 FUNCTION {output.nonnull}
 { 's :=
 output.state mid.sentence =
@@ -95,12 +97,14 @@ mid.sentence 'output.state :=
 if$
 s
 }
+
 FUNCTION {output}
 { duplicate$ empty$
 'pop$
 'output.nonnull
 if$
 }
+
 FUNCTION {output.check}
 { 't :=
 duplicate$ empty$
@@ -121,6 +125,7 @@ FUNCTION {new.block}
 { after.block 'output.state := }
 if$
 }
+
 FUNCTION {new.sentence}
 { output.state after.block =
 'skip$
@@ -131,6 +136,7 @@ if$
 }
 if$
 }
+
 FUNCTION {add.blank}
 {  " " * before.all 'output.state :=
 }
@@ -145,16 +151,19 @@ FUNCTION {not}
 { #1 }
 if$
 }
+
 FUNCTION {and}
 {   'skip$
 { pop$ #0 }
 if$
 }
+
 FUNCTION {or}
 {   { pop$ #1 }
 'skip$
 if$
 }
+
 FUNCTION {new.block.checkb}
 { empty$
 swap$ empty$
@@ -163,18 +172,21 @@ and
 'new.block
 if$
 }
+
 FUNCTION {field.or.null}
 { duplicate$ empty$
 { pop$ "" }
 'skip$
 if$
 }
+
 FUNCTION {emphasize}
 { duplicate$ empty$
 { pop$ "" }
 { "{\em " swap$ * "\/}" * }
 if$
 }
+
 FUNCTION {tie.or.space.prefix}
 { duplicate$ text.length$ #3 <
 { "~" }
@@ -306,6 +318,7 @@ MACRO {toois} {"ACM Transactions on Office Information Systems"}
 MACRO {toplas} {"ACM Transactions on Programming Languages and Systems"}
 
 MACRO {tcs} {"Theoretical Computer Science"}
+
 FUNCTION {bibinfo.check}
 { swap$
 duplicate$ missing$
@@ -364,7 +377,7 @@ s num.names$ 'numnames :=
 numnames 'namesleft :=
 { namesleft #0 > }
 { s nameptr
-"{vv~}{ll}{, f.}{, jj}"
+"{vv~}{ll}{, f.}{, jj.}"
 format.name$
 bibinfo bibinfo.check
 't :=
@@ -380,7 +393,7 @@ s nameptr "{ll}" format.name$ duplicate$ "others" =
 if$
 t "others" =
 {
-" " * bbl.etal *
+" " * et~al.*
 }
 {
 "\&"
@@ -498,6 +511,7 @@ duplicate$ empty$ 'skip$
 if$
 "title" bibinfo.check
 }
+
 FUNCTION {format.full.names}
 {'s :=
 "" 't :=
@@ -924,6 +938,7 @@ format.note output
 fin.entry
 write.url
 }
+
 FUNCTION {book}
 { output.bibitem
 author empty$
@@ -1015,227 +1030,255 @@ write.url
 }
 
 FUNCTION {incollection}
-{ output.bibitem
-format.authors "author" output.check
-author format.key output
-format.date "year" output.check
-date.block
-format.title "title" output.check
-new.block
-crossref missing$
-{ format.in.ed.booktitle "booktitle" output.check
-format.bvolume output
-format.number.series output
-format.chapter.pages output
-new.sentence
-format.publisher.address output
-format.edition output
-}
-{ format.incoll.inproc.crossref output.nonnull
-format.chapter.pages output
-}
-if$
-new.block
-format.note output
-fin.entry
-write.url
+{
+	output.bibitem
+	format.authors "author" output.check
+	author format.key output
+	format.date "year" output.check
+	date.block
+	format.title "title" output.check
+	new.block
+	crossref missing$
+	{
+		format.in.ed.booktitle "booktitle" output.check
+		format.bvolume output
+		format.number.series output
+		format.chapter.pages output
+		new.sentence
+		format.publisher.address output
+		format.edition output
+	}
+	{
+		format.incoll.inproc.crossref output.nonnull
+		format.chapter.pages output
+	}
+	if$
+	new.block
+	format.note output
+	fin.entry
+	write.url
 }
 
 FUNCTION {inproceedings}
-{ output.bibitem
-format.authors "author" output.check
-author format.key output
-format.date "year" output.check
-date.block
-format.title "title" output.check
-new.block
-crossref missing$
-{ format.in.ed.booktitle "booktitle" output.check
-format.bvolume output
-format.number.series output
-format.pages output
-new.sentence
-publisher empty$
-{ format.organization.address output }
-{ organization "organization" bibinfo.check output
-format.publisher.address output
-}
-if$
-}
-{ format.incoll.inproc.crossref output.nonnull
-format.pages output
-}
-if$
-new.block
-format.note output
-fin.entry
-write.url
+{
+	output.bibitem
+	format.authors "author" output.check
+	author format.key output
+	format.date "year" output.check
+	date.block
+	format.title "title" output.check
+	new.block
+	crossref missing$
+	{
+		format.in.ed.booktitle "booktitle" output.check
+		format.bvolume output
+		format.number.series output
+		format.pages output
+		new.sentence
+		publisher empty$
+		{
+			format.organization.address output
+		}
+		{
+			organization "organization" bibinfo.check output
+			format.publisher.address output
+		}
+		if$
+	}
+	{
+		format.incoll.inproc.crossref output.nonnull
+		format.pages output
+	}
+	if$
+	new.block
+	format.note output
+	fin.entry
+	write.url
 }
 
 FUNCTION {conference} { inproceedings }
 FUNCTION {manual}
-{ output.bibitem
-format.authors output
-author format.key output
-format.date "year" output.check
-date.block
-format.btitle "title" output.check
-organization address new.block.checkb
-organization "organization" bibinfo.check output
-address "address" bibinfo.check output
-format.edition output
-new.block
-format.note output
-fin.entry
-write.url
+{
+	output.bibitem
+	format.authors output
+	author format.key output
+	format.date "year" output.check
+	date.block
+	format.btitle "title" output.check
+	organization address new.block.checkb
+	organization "organization" bibinfo.check output
+	address "address" bibinfo.check output
+	format.edition output
+	new.block
+	format.note output
+	fin.entry
+	write.url
 }
 
 FUNCTION {mastersthesis}
-{ output.bibitem
-format.authors "author" output.check
-author format.key output
-format.date "year" output.check
-date.block
-format.btitle
-"title" output.check
-new.block
-bbl.mthesis format.thesis.type output.nonnull
-school "school" bibinfo.warn output
-address "address" bibinfo.check output
-new.block
-format.note output
-fin.entry
-write.url
+{
+	output.bibitem
+	format.authors "author" output.check
+	author format.key output
+	format.date "year" output.check
+	date.block
+	format.btitle
+	"title" output.check
+	new.block
+	bbl.mthesis format.thesis.type output.nonnull
+	school "school" bibinfo.warn output
+	address "address" bibinfo.check output
+	new.block
+	format.note output
+	fin.entry
+	write.url
 }
 
 FUNCTION {misc}
-{ output.bibitem
-format.authors output
-author format.key output
-format.date "year" output.check
-date.block
-format.title output
-new.block
-howpublished "howpublished" bibinfo.check output
-new.block
-format.note output
-fin.entry
-write.url
+{
+	output.bibitem
+	format.authors output
+	author format.key output
+	format.date "year" output.check
+	date.block
+	format.title output
+	new.block
+	howpublished "howpublished" bibinfo.check output
+	new.block
+	format.note output
+	fin.entry
+	write.url
 }
+
 FUNCTION {phdthesis}
-{ output.bibitem
-format.authors "author" output.check
-author format.key output
-format.date "year" output.check
-date.block
-format.btitle
-"title" output.check
-new.block
-bbl.phdthesis format.thesis.type output.nonnull
-school "school" bibinfo.warn output
-address "address" bibinfo.check output
-new.block
-format.note output
-fin.entry
-write.url
+{
+	output.bibitem
+	format.authors "author" output.check
+	author format.key output
+	format.date "year" output.check
+	date.block
+	format.btitle
+	"title" output.check
+	new.block
+	bbl.phdthesis format.thesis.type output.nonnull
+	school "school" bibinfo.warn output
+	address "address" bibinfo.check output
+	new.block
+	format.note output
+	fin.entry
+	write.url
 }
 
 FUNCTION {proceedings}
-{ output.bibitem
-format.editors output
-editor format.key output
-format.date "year" output.check
-date.block
-format.btitle "title" output.check
-format.bvolume output
-format.number.series output
-new.sentence
-publisher empty$
-{ format.organization.address output }
-{ organization "organization" bibinfo.check output
-format.publisher.address output
-}
-if$
-new.block
-format.note output
-fin.entry
-write.url
+{
+	output.bibitem
+	format.editors output
+	editor format.key output
+	format.date "year" output.check
+	date.block
+	format.btitle "title" output.check
+	format.bvolume output
+	format.number.series output
+	new.sentence
+	publisher empty$
+	{
+		format.organization.address output
+	}
+	{
+		organization "organization" bibinfo.check output
+		format.publisher.address output
+	}
+	if$
+	new.block
+	format.note output
+	fin.entry
+	write.url
 }
 
 FUNCTION {statute}
-{ output.bibitem
-author empty$
-{ format.editors "author and editor" output.check
-editor format.key output
-add.blank
-}
-{ format.authors output.nonnull
-crossref missing$
-{ "author and editor" editor either.or.check }
-'skip$
-if$
+{
+	output.bibitem
+	author empty$
+	{
+		format.editors "author and editor" output.check
+		editor format.key output
+		add.blank
+	}
+	{
+		format.authors output.nonnull
+		crossref missing$
+		{
+			"author and editor" editor either.or.check
+		}
+	'skip$
+	if$
 }
 if$
 format.date "year" output.check
 date.block
 format.btitle "title" output.check
 crossref missing$
-{ format.bvolume output
-new.block
-format.number.series output
-new.sentence
-format.publisher.address output
+{
+	format.bvolume output
+	new.block
+	format.number.series output
+	new.sentence
+	format.publisher.address output
 }
 {
-new.block
-format.book.crossref output.nonnull
+	new.block
+	format.book.crossref output.nonnull
 }
-if$
-format.edition output
-new.block
-format.note output
-fin.entry
-write.url
+	if$
+	format.edition output
+	new.block
+	format.note output
+	fin.entry
+	write.url
 }
 
 FUNCTION {techreport}
-{ output.bibitem
-format.authors "author" output.check
-author format.key output
-format.date "year" output.check
-date.block
-format.title
-"title" output.check
-new.block
-format.tr.number output.nonnull
-institution "institution" bibinfo.warn output
-address "address" bibinfo.check output
-new.block
-format.note output
-fin.entry
-write.url
+{
+	output.bibitem
+	format.authors "author" output.check
+	author format.key output
+	format.date "year" output.check
+	date.block
+	format.title
+	"title" output.check
+	new.block
+	format.tr.number output.nonnull
+	institution "institution" bibinfo.warn output
+	address "address" bibinfo.check output
+	new.block
+	format.note output
+	fin.entry
+	write.url
 }
 
 FUNCTION {unpublished}
-{ output.bibitem
-format.authors "author" output.check
-author format.key output
-format.date "year" output.check
-date.block
-format.title "title" output.check
-new.block
-format.note "note" output.check
-fin.entry
-write.url
+{	
+	output.bibitem
+	format.authors "author" output.check
+	author format.key output
+	format.date "year" output.check
+	date.block
+	format.title "title" output.check
+	new.block
+	format.note "note" output.check
+	fin.entry
+	write.url
 }
 
 FUNCTION {default.type} { misc }
 READ
+
 FUNCTION {sortify}
 { purify$
 "l" change.case$
 }
 INTEGERS { len }
+
 FUNCTION {chop.word}
 { 's :=
 'len :=
@@ -1244,6 +1287,7 @@ s #1 len substring$ =
 's
 if$
 }
+
 FUNCTION {format.lab.names}
 { 's :=
 "" 't :=
@@ -1369,6 +1413,7 @@ chop.word
 sortify
 #1 global.max$ substring$
 }
+
 FUNCTION {author.sort}
 { author empty$
 { key empty$
@@ -1381,6 +1426,7 @@ if$
 { author sort.format.names }
 if$
 }
+
 FUNCTION {author.editor.sort}
 { author empty$
 { editor empty$
@@ -1397,6 +1443,7 @@ if$
 { author sort.format.names }
 if$
 }
+
 FUNCTION {editor.sort}
 { editor empty$
 { key empty$
@@ -1449,6 +1496,7 @@ FUNCTION {initialize.extra.label.stuff}
 #0 'last.extra.num :=
 #0 'number.label :=
 }
+
 FUNCTION {forward.pass}
 { last.label label =
 { last.extra.num #1 + 'last.extra.num :=
