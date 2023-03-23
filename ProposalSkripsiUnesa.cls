@@ -1,7 +1,7 @@
-\ProvidesClass{ProposalSkripsiUnesa}[10/02/2023 v1.5]
+\ProvidesClass{ProposalSkripsiUnesa}[23/03/2023 v2.0]
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass[a4paper,12pt,twoside,openright]{book}
-\RequirePackage[hmargin={2.5cm,2cm},vmargin={2.5cm,2cm}]{geometry}
+\RequirePackage[hmargin={3cm,2.5cm},vmargin={2.5cm,3cm}]{geometry}
 \RequirePackage{graphicx,sectsty,setspace,amssymb,amsmath,amsthm,amsfonts,pxfonts,enumitem,indentfirst,tabularx,ifthen,lscape,hyperref,array,mathtools,subcaption,multirow,natbib,tikz,actuarialsymbol,actuarialangle,imakeidx}
 \RequirePackage[automake,toc]{glossaries}
 \RequirePackage[bahasa]{babel}
@@ -27,14 +27,7 @@
 \DeclareRobustCommand\ProgramStudi[1]{%
 	\renewcommand\@prodi{#1}
 }
-%\newcommand\@dep{Matematika}
-%\DeclareRobustCommand\Departemen[1]{%
-%   \renewcommand\@dep{#1}
-%}
-%\newcommand\@dept{Mathematics}
-%\DeclareRobustCommand\Department[1]{%
-%   \renewcommand\@dept{#1}
-%}
+
 \newcommand\@thn{2023}
 \DeclareRobustCommand\Tahun[1]{%
    \renewcommand\@thn{#1}
@@ -46,8 +39,10 @@
    \renewcommand\@faks{#2}
 }
 \newcommand\@fac{Mathematics and Natural Sciences}
-\DeclareRobustCommand\Faculty[1]{%
+\newcommand\@facs{MNS}
+\DeclareRobustCommand\Faculty[2]{%
    \renewcommand\@fac{#1}
+   \renewcommand\@facs{#2}
 }
 \newcommand\@pbbsatu{Nama Pembimbing Pertama}
 \newcommand\@pbbdua{Nama Pembimbing Kedua}
@@ -65,7 +60,22 @@
    \renewcommand{\@NIPpbbdua}{#2}%
    \renewcommand{\@NIPpbbtiga}{#3}%
 }
-
+\newcommand\@pujsatu{Nama Penguji Pertama}
+\newcommand\@pujdua{Nama Penguji Kedua}
+\newcommand\@pujtiga{Nama Penguji Ketiga}
+\DeclareRobustCommand\Penguji[3]{%
+	\renewcommand{\@pujsatu}{#1}%
+	\renewcommand{\@pujdua}{#2}%
+	\renewcommand{\@pujtiga}{#3}%
+}
+\newcommand\@NIPpujsatu{12345678 123456 1 123}
+\newcommand\@NIPpujdua{12345678 123456 1 123}
+\newcommand\@NIPpujtiga{12345678 123456 1 123}
+\DeclareRobustCommand\NIPPenguji[3]{%
+	\renewcommand{\@NIPpujsatu}{#1}%
+	\renewcommand{\@NIPpujdua}{#2}%
+	\renewcommand{\@NIPpujtiga}{#3}%
+}
 \newcommand\Awal{%
 	\frontmatter
 	\pagestyle{plain}
@@ -85,7 +95,7 @@
     
     Oleh\\
     \MakeUppercase{\@nama}\\
-    \textbf{NIM \@NIM}\\[25ex]
+    \textbf{NIM \@NIM}\\[22ex]
     
     \textbf{\textit{UNIVERSITAS NEGERI SURABAYA}}\\
     FAKULTAS~\MakeUppercase{\@fak}\\
@@ -100,31 +110,76 @@
 \DeclareRobustCommand\TanggalDisetujui[1]{%
    \renewcommand\@tglsetuju{#1}
 }
+
+\newcommand\@tglujian{6 Februari 2023}
+\DeclareRobustCommand\TanggalUjian[1]{%
+	\renewcommand\@tglujian{#1}
+}
+
 \newcommand\HalamanPersetujuan
 {
    \cleardoublepage
-    \enlargethispage{1.5cm}
-    \thispagestyle{empty}
+    \thispagestyle{plain}
     \noindent
-    	\centerline{\large\bfseries{\MakeUppercase{Halaman Persetujuan}}}\\[10ex]
-    \noindent
+    	\chapter*{Halaman Persetujuan}
+    	%\centerline{\large\bfseries{\MakeUppercase{Halaman Persetujuan}}}\\[10ex]
+    \noindent Yang bertanda tangan di bawah ini,\\
+    
     \begin{tabular}{@{}lcp{11cm}}
-    	Usulan Penelitian oleh & : & \@nama\\
+    	Nama Dosen & : & \@pbbsatu\\
+    	NIP & : &  \@NIPpbbsatu\\[3ex]
+    \end{tabular}
+    
+    \noindent sebagai dosen pembimbing skripsi mahasiswa\\
+    
+    \begin{tabular}{@{}lcp{11cm}}
+    	Nama & : & \@nama\\
     	NIM & : &  \@NIM\\
-    	Judul & : & \@judul
+    	Judul Proposal Skripsi & : & \@judul\\[3ex]
     \end{tabular}
 	
 	\noindent
-	ini telah disetujui dan dinyatakan memenuhi syarat untuk diseminarkan.\\[18ex]
+	telah menyetujui mahasiswa tersebut di atas untuk mengikuti ujian proposal skripsi.\\[18ex]
 	
 	\noindent
-	Surabaya, \@tglsetuju\\
-	Pembimbing,\\[10ex]
-	
-	\noindent
-	\@pbbsatu\\
-	NIP.~\@NIPpbbsatu\\
+	\begin{tabular}{p{8cm}l}
+		& Surabaya, \@tglsetuju\\
+		& Dosen Pembimbing,\\[12ex]
+		& \@pbbsatu\\
+		& NIP.~\@NIPpbbsatu\\
+	\end{tabular}
     \addcontentsline{toc}{chapter}{HALAMAN PERSETUJUAN}
+}
+
+\newcommand\HalamanPengesahan
+{
+	\cleardoublepage
+	\thispagestyle{plain}
+	\noindent
+	\chapter*{Halaman Pengesahan}
+	%\centerline{\large\bfseries{\MakeUppercase{Halaman Pengesahan}}}\\[7ex]
+	\noindent
+	Proposal skripsi dengan judul "\@judul" yang disusun oleh:\\
+	
+	\begin{tabular}{@{}lcp{8cm}}
+		Nama & : & \@nama\\
+		NIM & : &  \@NIM\\[3ex]
+	\end{tabular}
+	
+	\noindent
+	telah diuji pada tanggal \@tglujian~dan telah direvisi sesuai masukan pada saat ujian\\[5ex]
+	\noindent
+	\begin{tabular}{cp{6.5cm}p{3cm}p{2cm}}    
+		\multicolumn{2}{c}{Dewan Penguji} & \multicolumn{1}{c}{Tanda} & \multicolumn{1}{c}{Tanggal Selesai}\\
+		& & \multicolumn{1}{c}{Tangan} & \multicolumn{1}{c}{Revisi}\\[2ex]
+		Penguji 1 & \@pujsatu & & \\
+		& NIP.~\@NIPpujsatu & \multicolumn{1}{c}{\dotfill} & \multicolumn{1}{c}{\dotfill} \\[5ex]
+		Penguji 2 & \@pujdua & & \\
+		& NIP.~\@NIPpujdua & \multicolumn{1}{c}{\dotfill} & \multicolumn{1}{c}{\dotfill} \\[5ex]
+		Penguji 3 & \@pbbsatu & & \\
+		& NIP.~\@NIPpbbsatu & \multicolumn{1}{c}{\dotfill} & \multicolumn{1}{c}{\dotfill} \\[5ex]
+	\end{tabular}
+	\addcontentsline{toc}{chapter}{HALAMAN PENGESAHAN}
 }
 
 \newcommand{\DaftarIsi}{%---------------------
@@ -145,7 +200,7 @@
 }
 \newcommand{\DaftarSimbol}{%----------------------
     \cleardoublepage
-    \centerline{\large\bfseries{\MakeUppercase{Daftar Simbol}}}
+    \chapter*{Daftar Simbol}
     \addcontentsline{toc}{chapter}{DAFTAR SIMBOL}
 }
 \newcommand\Inti{%--------------------
@@ -224,6 +279,7 @@
 \renewcommand*\thechapter{\@Roman\c@chapter}
 \renewcommand*\thesection{\@Alph\c@section.}
 \renewcommand*\thesubsection{\@arabic\c@subsection.}
+\renewcommand*\thesubsubsection{\@arabic\c@subsection.\@arabic\c@subsubsection.}
 
 \newtheorem{theorem}{Teorema}[chapter]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -324,18 +380,17 @@
 \renewcommand\contentsname{DAFTAR ISI}
 \renewcommand\listfigurename{DAFTAR GAMBAR}
 \renewcommand\listtablename{DAFTAR TABEL}
-%\renewcommand\bibname{DAFTAR PUSTAKA}
-\renewcommand\indexname{INDEKS}
 \renewcommand\figurename{Gambar}
 \renewcommand\tablename{Tabel}
 \renewcommand\chaptername{BAB}
 \renewcommand\appendixname{Lampiran}
 \renewcommand\proofname{Bukti}
 \renewcommand\qedsymbol{$\blacksquare$}
-\addto{\captionsbahasa}{\renewcommand{\bibname}{DAFTAR PUSTAKA}}
+\addto\captionsbahasa{\renewcommand{\bibname}{DAFTAR PUSTAKA}}
 \addto\captionsbahasa{\renewcommand{\glossaryname}{GLOSARIUM}}
+\addto\captionsbahasa{\renewcommand{\indexname}{INDEKS}}
 
-\lefthyphenmin=5
-\righthyphenmin=5
-\sloppy
+%\lefthyphenmin=5
+%\righthyphenmin=5
+%\sloppy
 \pagestyle{myheadings}
