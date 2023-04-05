@@ -1,8 +1,9 @@
-\ProvidesClass{ProposalSkripsiUnesa}[23/03/2023 v2.0]
+\ProvidesClass{ProposalSkripsiUnesa}[04/04/2023 v2.0]
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass[a4paper,12pt,twoside,openright]{book}
 \RequirePackage[hmargin={3cm,2.5cm},vmargin={2.5cm,3cm}]{geometry}
 \RequirePackage{graphicx,sectsty,setspace,amssymb,amsmath,amsthm,amsfonts,pxfonts,enumitem,indentfirst,tabularx,ifthen,lscape,hyperref,array,mathtools,subcaption,multirow,natbib,tikz,actuarialsymbol,actuarialangle,imakeidx}
+\RequirePackage[font=small,labelfont=bf]{caption}
 \RequirePackage[automake,toc]{glossaries}
 \RequirePackage[bahasa]{babel}
 \usetikzlibrary{shapes.geometric, arrows}
